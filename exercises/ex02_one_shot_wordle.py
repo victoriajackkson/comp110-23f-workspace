@@ -10,17 +10,17 @@ guess: str = str(input(f"What is your {len(secret)}-letter guess? "))
 
 
 while len(guess) != len(secret):
-# Reassigning guess variable to ask for player input again
+    # Reassigning guess variable to ask for player input again
     guess = input(f"That was not {len(secret)} letters! Try again: ")
-# Checking to see if any guessed characters are present in the indices of the secret
+    # Checking to see if any guessed characters are present in the indices of the secret
 index: int = 0
 emoji: str = ""
 
 while index < len(secret):
- # Checking to see if index of guess is equal to that of the secret
+    # Checking to see if index of guess is equal to that of the secret
     if guess[index] == secret[index]:
         emoji = emoji + GREEN_BOX
-# Setting up boolean for characters in guess. Creating count for guessed characters in wrong place.
+    # Setting up boolean for characters in guess. Creating count for guessed characters in wrong place.
     else:
         guessed_chr: bool = False
         alt_index: int = 0
@@ -34,8 +34,8 @@ while index < len(secret):
             emoji = emoji + YELLOW_BOX
         else:
             emoji = emoji + WHITE_BOX
-    index = index +1
-
+    index = index + 1
+# Printing the resulting emojis of guessed characters found/not found in secret word
 print(emoji)
 
 if guess == secret:
