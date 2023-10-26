@@ -16,7 +16,7 @@ def test_sum_one_element() -> None:
 
 def test_sum_positives() -> None:
     """sum_evens_of_list of a list."""
-    test_list: list[int]= [1, 2, 3]
+    test_list: list[int] = [1, 2, 3]
     assert sum_evens_of_list(test_list) == 6
 
 
