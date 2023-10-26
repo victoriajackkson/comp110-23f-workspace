@@ -1,13 +1,13 @@
-""" Program that loops until correct number is guessed"""
+"""Program that loops until correct number is guessed."""
 
 secret: int = 5
 guess: int = int(input("Guess a number between 1 and 10: "))
 number_of_tries: int = 0
 max_tries: int = 3
 
-while (guess != secret) and (number_of_tries < max_tries-1):
+while (guess != secret) and (number_of_tries < max_tries -1):
     # you could also start number of tries at 0
-    print ("Wrong!")
+    print("Wrong!")
     # if guess is out of bounds, tell them
     if (guess < 1) or (guess > 10):
         print("That's not between 1 and 10! ")
@@ -24,4 +24,4 @@ while (guess != secret) and (number_of_tries < max_tries-1):
 if guess == secret:
     print("You guessed correctly! ")
 else:
-    print("You lose, :(" )
+    print("You lose, :(")

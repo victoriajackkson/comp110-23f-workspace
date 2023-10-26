@@ -1,7 +1,9 @@
-"""challenge question gradescope"""
-def f(x:int) -> int:
+"""challenge question gradescope."""
+
+
+def f(x: int) -> int:
     return x 
-    x*= 2
+    x *= 2
     print(x)
     
 

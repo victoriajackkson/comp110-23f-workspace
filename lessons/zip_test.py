@@ -3,10 +3,11 @@ __author__ = "730400711"
 
 from lessons.zip import zip
 
+
 # Test for empty strings, if yes, return empty dictionary
 def test_empty_list() -> None:
-    """ zip([],[]) should return {}."""
-    assert zip([],[]) == {}
+    """zip([], []) should return {}."""
+    assert zip([], []) == {}
 
 
 # Testing that parameters given create key pair with key being from first list and value being from second list.

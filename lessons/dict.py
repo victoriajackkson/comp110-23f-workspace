@@ -24,12 +24,12 @@ ice_cream["vanilla"] = 10
 print("After updating vanilla:")
 print(ice_cream)
 
-#Print the length
+# Print the length
 print(f"There are {len(ice_cream)} flavors.")
 
 # Checking if values are in dictionary
 print("chocolate in dictionary?")
-print("chocolate"in ice_cream)
+print("chocolate" in ice_cream)
 print("mint in dictionary?")
 print("mint" in ice_cream)
 

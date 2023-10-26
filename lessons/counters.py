@@ -1,4 +1,4 @@
-"""Practicing Counters"""
+"""Practicing Counters."""
 
 # Initialize the string i want to count the odds of
 num_string: str = "203"

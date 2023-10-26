@@ -1,7 +1,10 @@
-"""Things I'll be importing"""
+"""Things I'll be importing."""
 
-def addition(x:int, y:int):
+
+def addition(x: int, y: int) -> int:
+    """Returning sum of arguments."""
     return x + y
+
 
 my_variable: str = "Hello!"
 
