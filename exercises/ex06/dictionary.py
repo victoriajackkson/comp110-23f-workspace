@@ -17,17 +17,18 @@ def invert(input_dict: dict[str, str]) -> dict[str, str]:
 def favorite_color(input_dict: dict[str, str]) -> str:
     """Takes dictionary of names and faviorite colors and returns color that appears most frequently."""
     color_counter: dict[str, int] = {}
-    favorite: str = ""
-    max: int = 0
-    for color in input_dict.values():
-        if color in color_counter:
-            color_counter[color] += 1
+    favorite: int = 0
+    for color in input_dict:
+        if input_dict[color] in color_counter:
+            color_counter[input_dict[color]] += 1
         else: 
-            color_counter[color] = 1
-        if color_counter[color] > max or (color_counter[color] == max and color != favorite):
-            max = color_counter[color]
-            favorite == color
-    return color
+            color_counter[input_dict[color]] = 1
+    for color in color_counter:
+        if color_counter[color] > favorite:
+            favorite = color_counter[color]
+    for color in color_counter:
+        if color_counter[color] == favorite:
+            return color
 
 
 def count(input_list: list[str]) -> dict[str, int]:
@@ -43,7 +44,7 @@ def count(input_list: list[str]) -> dict[str, int]:
 
 def alphabetizer(list1: list[str]) -> dict[str, list[str]]:
     """Given list, dictionary produced with words that start with key."""
-    word_dict: dict[str, list[str]]= {}
+    word_dict: dict[str, list[str]] = {}
     for word in list1:
         word = word.lower()
         first_letter = word[0].lower()
