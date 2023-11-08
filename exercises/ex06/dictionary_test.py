@@ -2,6 +2,7 @@
 __author__ = "730400711"
 
 from exercises.ex06.dictionary import invert, count, favorite_color, alphabetizer, update_attendance
+import pytest
 
 
 # Tests for invert
@@ -12,18 +13,18 @@ def test_invert_empty_list() -> None:
 
 def test_invert() -> None:
     """invert({}) should return {keys as values, values as keys}."""
-    my_dictionary: dict[str, str] = {"hello": "v", "smile" : "big"}
+    my_dictionary: dict[str, str] = {"hello": "v", "smile": "big"}
     assert invert(my_dictionary) == {'v': 'hello', 'big': 'smile'}
 
 
-import pytest
-with pytest.raises(KeyError):
+def test_invert_same_keys() -> None:
     """invert({}) should raise KeyError if keys in {} are the same."""
-    test_dict: dict[str, str] = {'alyssa': 'byrnes', 'adam': 'byrnes'}
-    invert(test_dict)
+    with pytest.raises(KeyError):
+        test_dict: dict[str, str] = {'alyssa': 'byrnes', 'adam': 'byrnes'}
+        invert(test_dict)
 
 
-#Tests for favorite_color
+# Tests for favorite_color
 def test_favorite_color() -> None:
     """favorite_color({}) should return color most reported."""
     my_dict: dict[str, str] = {"Hannah": "Yellow", "Soren": "Yellow", "Kat": "Yellow", "Jacob": "Orange"}
@@ -37,11 +38,11 @@ def test_tie() -> None:
 
 
 def test_favorite_color_empty_list() -> None:
-    """favorite_color({}) should return {}."""
+    """favorite_color({}) should return ""."""
     assert favorite_color({}) == None
 
 
-#Tests for count
+# Tests for count
 def test_count_empty() -> None:
     """count([]) should return {}."""
     assert count([]) == {}
@@ -49,13 +50,13 @@ def test_count_empty() -> None:
 
 def test_count() -> None:
     """count([]) should return keys as counter of values in input."""
-    my_list: list [str] = ["Soren", "Soren", "Hello", "There"]
+    my_list: list[str] = ["Soren", "Soren", "Hello", "There"]
     assert count(my_list) == {'Soren': 2, 'Hello': 1, 'There': 1}
 
 
 def test_count_wrong_input() -> None:
     """count([]) should return at least one item if something in input."""
-    my_list1: list [str] = [1]
+    my_list1: list[str] = [1]
     assert count(my_list1) == {1: 1}
 
 
@@ -67,13 +68,13 @@ def test_aplhabetizer_empty_list() -> None:
 
 def test_alphabetizer() -> None:
     """alphabetizer([]) should return dictionary with words that start with key."""
-    my_alphabet_list: list [str] = ["popcorn", "play", "hello", "kitty"]
-    assert alphabetizer(my_alphabet_list) == {'p': ['popcorn', 'play'], 'h': ['hello'], 'k': ['kitty']}
+    my_alphabet_list: list[str] = ["popcorn", "Play", "hello", "Kitty"]
+    assert alphabetizer(my_alphabet_list) == {'p': ['popcorn', 'Play'], 'h': ['hello'], 'k': ['Kitty']}
 
 
 def test_alphabetizer_one_item() -> None:
-    """test if one item present in input."""
-    my_alphabet_list1: list [str] = ["hike"]
+    """Test if one item present in input."""
+    my_alphabet_list1: list[str] = ["hike"]
     assert alphabetizer(my_alphabet_list1) == {'h': ['hike']}
 
 
@@ -96,8 +97,8 @@ def test_update_attendance() -> None:
 
 
 def test_update_attendance_add_students() -> None:
-    """update attendance with new students and corresponding days."""
+    """Update attendance to add student to existing weekday."""
     my_days1: str = "Friday"
     my_input1: dict[str, list[str]] = {"Friday": ["Caleb", "Mercedes", "Valeria"], "Wednesday": ["Caleb"]}
-    my_students1: str = "Caleb"
-    assert update_attendance(my_input1, my_days1, my_students1) == {'Friday': ['Caleb', 'Mercedes', 'Valeria', 'Caleb'], 'Wednesday': ['Caleb']}
+    my_students1: str = "Julie"
+    assert update_attendance(my_input1, my_days1, my_students1) == {'Friday': ['Caleb', 'Mercedes', 'Valeria', 'Julie'], 'Wednesday': ['Caleb']}

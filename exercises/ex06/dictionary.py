@@ -46,7 +46,7 @@ def alphabetizer(list1: list[str]) -> dict[str, list[str]]:
     """Given list, dictionary produced with words that start with key."""
     word_dict: dict[str, list[str]] = {}
     for word in list1:
-        word = word.lower()
+        # word = word.lower()
         first_letter = word[0].lower()
 
         if first_letter in word_dict:
@@ -59,7 +59,8 @@ def alphabetizer(list1: list[str]) -> dict[str, list[str]]:
 def update_attendance(input: dict[str, list[str]], weekday: str, student: str) -> dict[str, list[str]]:
     """Update attendance each day with student's names."""
     if weekday in input:
-        input[weekday].append(student)
+        if student not in input:
+            input[weekday].append(student)
     else:
         input[weekday] = [student]
     return input
