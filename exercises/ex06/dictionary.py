@@ -18,6 +18,9 @@ def favorite_color(input_dict: dict[str, str]) -> str:
     """Takes dictionary of names and favorite colors and returns color that appears most frequently."""
     color_counter: dict[str, int] = {}
     favorite: int = 0
+    # Returning empty string if no input.
+    if not input_dict:
+        return ""
     for color in input_dict:
         if input_dict[color] in color_counter:
             color_counter[input_dict[color]] += 1
@@ -59,7 +62,7 @@ def alphabetizer(list1: list[str]) -> dict[str, list[str]]:
 def update_attendance(input: dict[str, list[str]], weekday: str, student: str) -> dict[str, list[str]]:
     """Update attendance each day with student's names."""
     if weekday in input:
-        if student not in input:
+        if student not in input[weekday]:
             input[weekday].append(student)
     else:
         input[weekday] = [student]

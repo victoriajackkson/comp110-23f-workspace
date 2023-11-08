@@ -39,7 +39,7 @@ def test_tie() -> None:
 
 def test_favorite_color_empty_list() -> None:
     """favorite_color({}) should return ""."""
-    assert favorite_color({}) == None
+    assert favorite_color({}) == ""
 
 
 # Tests for count
