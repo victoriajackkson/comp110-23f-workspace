@@ -15,7 +15,7 @@ def invert(input_dict: dict[str, str]) -> dict[str, str]:
 
 
 def favorite_color(input_dict: dict[str, str]) -> str:
-    """Takes dictionary of names and faviorite colors and returns color that appears most frequently."""
+    """Takes dictionary of names and favorite colors and returns color that appears most frequently."""
     color_counter: dict[str, int] = {}
     favorite: int = 0
     for color in input_dict:
