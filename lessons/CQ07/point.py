@@ -26,7 +26,7 @@ class Point:
     
     def __str__(self) -> str:
         """Strings for x and y."""
-        p_string: str = f"x:{self.x}; y:{self.y}"
+        p_string: str = f"x: {self.x}; y: {self.y}"
         return p_string
     
     def __mul__(self, factor: int | float) -> Point:
@@ -35,7 +35,7 @@ class Point:
         return new_point
     
     def __add__(self, factor: int | float) -> Point:
-        """ Adds factor to x and y."""
+        """Adds factor to x and y."""
         new_point: Point = Point(self.x + factor, self.y + factor)
         return new_point
     
