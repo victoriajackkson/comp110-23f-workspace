@@ -11,15 +11,13 @@ class Simpy:
     """This is my class to represent Simpy."""
     values: list[float]
 
-    # TODO: Your constructor and methods will go here.
-
     def __init__(self, ones: list[float]):
         """Constructor to initialize the values attributed to Simpy object."""
         self.values = ones
     
     def __str__(self) -> str:
         """Method to produce strings of text for Simpy."""
-        my_string: str = f"Simpy{self.values}"
+        my_string: str = f"Simpy({self.values})"
         return my_string
     
     def fill(self, filling_list: float, times_to_fill: int) -> None:
@@ -53,16 +51,16 @@ class Simpy:
     
     def __add__(self, rhs: Union[float, Simpy]) -> Simpy:
         """Magic method to add simpy objects and floats."""
-        if isinstance (rhs, Simpy):
+        new_numbers = []
+        if isinstance(rhs, Simpy):
             assert len(self.values) == len(rhs.values)
-            new_numbers = []
-    # adds two Simpy objects
+        # Adds two Simpy objects
             for x in range(len(self.values)):
                 new_numbers.append(self.values[x] + rhs.values[x])
         else:
-    # adds Simpy and float
+            # Adds Simpy and float
             for x in self.values:
-                new_numbers = [x + rhs]
+                new_numbers.append(x + rhs)
         return Simpy(new_numbers) 
     
     def __pow__(self, rhs: Union[float, Simpy]) -> Simpy:
@@ -70,43 +68,70 @@ class Simpy:
         new_numbers = []
         if isinstance(rhs, Simpy):
             assert len(self.values) == len(rhs.values)
-    # raises two Simpys
+        # raises two Simpys
             for x in range(len(self.values)):
                 new_numbers.append(self.values[x] ** rhs.values[x])
         else:
-    # raises Simpy by float
+            # raises Simpy by float
             for x in self.values:
                 new_numbers.append(x ** rhs)
         return Simpy(new_numbers) 
     
     def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]:
         """Magic method to see if objects are equal."""
-        new_values =[]
-        equal: bool = False
+        new_values = []
+        equal: bool = True
         if isinstance(rhs, Simpy):
             assert len(self.values) == len(rhs.values)
-    # for two Simpys
+        # for two Simpys
             for x in range(len(self.values)):
                 if self.values[x] == rhs.values[x]:
-                    new_values.append(self.values[x] and rhs.values[x])
                     equal = True
+                else:
+                    equal = False
+                new_values.append(equal)
         else:
-    # raises Simpy by float
-            if rhs in self.values:
-                new_values != equal
+            # Simpy and float
+            if isinstance(rhs, float):
+                for x in range(len(self.values)):
+                    if rhs == self.values[x]:
+                        equal = True
+                    else:
+                        equal = False
+                    new_values.append(equal)
         return new_values
     
     def __gt__(self, rhs: Union[float, Simpy]) -> list[bool]:
         """Operator overload for >."""
+        new_values = []
+        greater_than: bool = True
         if isinstance(rhs, Simpy):
             assert len(self.values) == len(rhs.values)
-            return Simpy([x > y for x, y in zip(self.values, rhs.values)])
+        # for two Simpys
+            for x in range(len(self.values)):
+                if self.values[x] > rhs.values[x]:
+                    greater_than = True
+                else:
+                    greater_than = False
+                new_values.append(greater_than)
         else:
-            return Simpy([i > rhs for i in self.values])
+            for x in range(len(self.values)):
+                if self.values[x] > rhs:
+                    greater_than = True
+                else:
+                    greater_than = False
+                new_values.append(greater_than)
+        return new_values
 
     def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
         """Operator overload to add subscription notation."""
         if isinstance(rhs, int):
             return self.values[rhs]
-        elif isinstance(rhs, list) and all(isinstance(x, bool) for x in rhs):
-            return Simpy([self.values[value]] for value in range(len(self.values)) if rhs[value])
+        elif isinstance(rhs, list):
+            new_values: Simpy = Simpy([])
+            assert len(rhs) == len(self.values)
+            for value in range(len(self.values)):
+                if rhs[value]:
+                    # Adds specific values to new_values list
+                    new_values.values.append(self.values[value])
+            return new_values
